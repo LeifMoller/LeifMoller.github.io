@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+
+    <title>PID Force-Controlled Gripper | Leif Moller</title>
+
+    <link rel="stylesheet" href="sizes.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="styles.scss" />
+
+    <style>
+      /* Sizes come from sizes.css (linked above) — see that file to adjust. */
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-weight: 600;
+        opacity: 0.85;
+      }
+      .back-link:hover {
+        opacity: 1;
+      }
+      .detail-btn {
+        display: inline-block;
+        padding: 1.4rem 3.2rem;
+        border-radius: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+      }
+      .detail-btn--solid {
+        background: #0d1b2a;
+        color: #ffffff;
+      }
+
+      figure.detail-figure {
+        margin: 0;
+      }
+      figure.detail-figure img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        display: block;
+      }
+      figure.detail-figure figcaption {
+        font-family: sans-serif;
+        font-size: var(--detail-caption-text-size);
+        color: #718096;
+        margin-top: 0.75rem;
+        font-style: italic;
+      }
+
+      .figure-row {
+        display: grid;
+        grid-template-columns: repeat(var(--cols, 2), 1fr);
+        gap: 1.75rem;
+        align-items: start;
+        margin: 0 0 2.5rem 0;
+      }
+      @media (max-width: 800px) {
+        .figure-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .detail-p {
+        font-family: sans-serif;
+        font-size: var(--detail-body-text-size);
+        line-height: 1.7;
+        color: #4a5568;
+        margin: 0 0 1.5rem 0;
+      }
+
+      /* ============================================================
+         The base template's hidden styles.scss applies its own
+         alignment/position/margin rules to plain h1/h2/h3/p/ul/li tags.
+         Regular class selectors aren't specific enough to beat the
+         template's !important rules, so these use unique IDs.
+         ============================================================ */
+      #detail-title,
+      #overview-heading,
+      #process-heading,
+      #results-heading {
+        position: static !important;
+        transform: none !important;
+        float: none !important;
+      }
+      #overview-heading,
+      #process-heading,
+      #results-heading {
+        text-align: left !important;
+      }
+      #overview-heading {
+        margin: 0 0 1rem 0 !important;
+      }
+      #process-heading {
+        margin: 2.5rem 0 1rem 0 !important;
+      }
+      #results-heading {
+        margin: 3rem 0 1rem 0 !important;
+      }
+      #detail-title {
+        margin: 0 !important;
+        text-align: left !important;
+      }
+      main ul,
+      main li,
+      main p {
+        position: static !important;
+        text-align: left !important;
+        transform: none !important;
+        float: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- **** Header (navy) **** -->
+    <section style="background: #0d1b2a; color: #ffffff; padding: 2.5rem 5% 4rem;">
+      <a href="index.html#projects" class="back-link">
+        <i class="fa fa-angle-left"></i> Back to Projects
+      </a>
+
+      <div style="max-width: 1000px; margin: 3rem auto 0;">
+        <h1 id="detail-title" style="font-family: serif; font-size: var(--detail-title-size); font-weight: 800; line-height: 1.1;">
+          PID Force-Controlled Gripper
+        </h1>
+
+        <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; margin-top: 2.5rem;">
+          <div style="flex: 1 1 380px;">
+            <p class="detail-p" style="font-size: var(--detail-subtitle-size); color: #cbd5e1; margin-bottom: 0; text-align: left;">
+              Creating a force-controlled gripper using a PI loop to adjust clamping force to
+              different objects identified using computer vision.
+            </p>
+          </div>
+          <div style="flex: 1 1 380px;">
+            <!-- TODO: swap for your preferred hero photo if calCircuit.jpg isn't it -->
+            <figure class="detail-figure">
+              <img
+                alt="Force sensor calibration circuit for the gripper"
+                src="assets/calCircuit.jpg"
+                style="box-shadow: 0 20px 48px rgba(0,0,0,0.28);"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- **** Main Content **** -->
+    <main style="padding: 0 5% 6rem;">
+      <div style="max-width: 1000px; margin: 3rem auto 0;">
+
+        <h2 id="overview-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+          Overview
+        </h2>
+
+        <p class="detail-p">
+          First designed a claw in CAD using a rack and pinion gear to drive motion. Then
+          created a calibration circuit for the force sensor, and made our own force-ADC curve
+          after realising variance to the datasheet was too high.
+        </p>
+
+        <p class="detail-p">
+          Currently working on the circuitry for the motor, after which I will code the PI
+          loop while my partner prints and assembles the claw. After we confirm the claw works
+          with force presets, we will add a camera connected to a Raspberry Pi for the
+          computer vision software.
+        </p>
+
+        <h2 id="process-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+          Process
+        </h2>
+
+        <p class="detail-p">
+          I started by building a calibration circuit for the FSR (force-sensing resistor) —
+          to ensure code translates ADC values to force properly — while my partner began
+          designing the claw's CAD.
+        </p>
+
+        <div class="figure-row" style="--cols: 2;">
+          <figure class="detail-figure">
+            <img alt="Force sensor calibration circuit" src="assets/calCircuit.jpg" />
+            <figcaption>Fig. 1 — Calibration circuit for the force-sensing resistor (FSR).</figcaption>
+          </figure>
+          <figure class="detail-figure">
+            <img alt="Calibration setup for the force sensor" src="assets/cal.jpg" />
+            <figcaption>Fig. 2 — Calibration setup used to translate ADC readings to force.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Experimental force readings differed from theoretical values enough to warrant the
+          creation of our own force–ADC curve. This was done using several data points
+          <!-- TODO: fill in the actual number of data points used -->
+          collected experimentally.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Custom force-ADC calibration curve" src="assets/forceCurve.jpg" />
+            <figcaption>Fig. 3 — Custom force–ADC curve, built from experimental data rather than the datasheet.</figcaption>
+          </figure>
+        </div>
+
+        <h2 id="results-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+          Results
+        </h2>
+        <p class="detail-p" style="font-style: italic;">
+          In progress! Check back soon for the finished gripper, PI control results, and
+          computer vision integration.
+        </p>
+
+        <!-- TODO: link to the real source code / write-up, or delete the button -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+          <a rel="noreferrer" target="_blank" href="https://github.com/LeifMoller/FSR-Claw" class="detail-btn detail-btn--solid">View Source Code</a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- **** Footer — same as index.html **** -->
+    <footer style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 3rem 5%;">
+      <div style="max-width: 1400px; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 2rem;">
+
+        <div>
+          <h3 style="font-family: serif; font-size: var(--footer-name-size); font-weight: 800; color: #0d1b2a; margin: 0 0 0.25rem 0;">
+            Leif Moller
+          </h3>
+          <p style="font-family: sans-serif; font-size: var(--footer-text-size); color: #64748b; margin: 0 0 1rem 0;">
+            UBC Engineering Physics Student
+          </p>
+          <div style="display: flex; gap: 1.25rem; align-items: center;">
+            <a rel="noreferrer" href="mailto:leif.moller12@gmail.com" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="Email">
+              <i class="fa fa-envelope-o" style="font-size: 1.3rem;"></i>
+            </a>
+            <a rel="noreferrer" href="https://linkedin.com/in/leifmoller" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="LinkedIn">
+              <i class="fa fa-linkedin" style="font-size: 1.3rem;"></i>
+            </a>
+            <a rel="noreferrer" href="https://github.com/LeifMoller" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="GitHub">
+              <i class="fa fa-github" style="font-size: 1.3rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <nav style="display: flex; gap: 1.5rem; justify-content: flex-end; margin-bottom: 0.75rem; flex-wrap: wrap;">
+            <a href="index.html#about" style="color: #334155; text-decoration: none; font-family: sans-serif; font-weight: 600; font-size: var(--footer-text-size);">About</a>
+            <a href="index.html#projects" style="color: #334155; text-decoration: none; font-family: sans-serif; font-weight: 600; font-size: var(--footer-text-size);">Projects</a>
+          </nav>
+          <p style="font-family: sans-serif; font-size: calc(var(--footer-text-size) * 0.85); color: #94a3b8; margin: 0;">
+            © 2026 Leif Moller
+          </p>
+        </div>
+
+      </div>
+    </footer>
+  </body>
+</html>

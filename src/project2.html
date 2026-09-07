@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+
+    <title>Swan-Neck Rear Wing Mount | Leif Moller</title>
+
+    <link rel="stylesheet" href="sizes.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="styles.scss" />
+
+    <style>
+      /* Sizes come from sizes.css (linked above) — see that file to adjust. */
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-weight: 600;
+        opacity: 0.85;
+      }
+      .back-link:hover {
+        opacity: 1;
+      }
+      .detail-btn {
+        display: inline-block;
+        padding: 1.4rem 3.2rem;
+        border-radius: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+      }
+      .detail-btn--solid {
+        background: #0d1b2a;
+        color: #ffffff;
+      }
+
+      figure.detail-figure {
+        margin: 0;
+      }
+      figure.detail-figure img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        display: block;
+      }
+      figure.detail-figure figcaption {
+        font-family: sans-serif;
+        font-size: var(--detail-caption-text-size);
+        color: #718096;
+        margin-top: 0.75rem;
+        font-style: italic;
+      }
+
+      .figure-row {
+        display: grid;
+        grid-template-columns: repeat(var(--cols, 2), 1fr);
+        gap: 1.75rem;
+        align-items: start;
+        margin: 0 0 2.5rem 0;
+      }
+      @media (max-width: 800px) {
+        .figure-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .detail-p {
+        font-family: sans-serif;
+        font-size: var(--detail-body-text-size);
+        line-height: 1.7;
+        color: #4a5568;
+        margin: 0 0 1.5rem 0;
+      }
+
+      /* ============================================================
+         The base template's hidden styles.scss applies its own
+         alignment/position/margin rules to plain h1/h2/h3/p/ul/li tags.
+         Regular class selectors aren't specific enough to beat the
+         template's !important rules, so these use unique IDs.
+         ============================================================ */
+      #detail-title,
+      #overview-heading,
+      #process-heading,
+      #setup-heading,
+      #iterations-heading,
+      #results-heading,
+      #slides-heading {
+        position: static !important;
+        transform: none !important;
+        float: none !important;
+      }
+      #overview-heading,
+      #process-heading,
+      #setup-heading,
+      #iterations-heading,
+      #results-heading,
+      #slides-heading {
+        text-align: left !important;
+      }
+      #overview-heading {
+        margin: 0 0 1rem 0 !important;
+      }
+      #process-heading {
+        margin: 2.5rem 0 1rem 0 !important;
+      }
+      #setup-heading {
+        margin: 0 0 1rem 0 !important;
+      }
+      #iterations-heading {
+        margin: 2.5rem 0 1rem 0 !important;
+      }
+      #results-heading {
+        margin: 3rem 0 1rem 0 !important;
+      }
+      #slides-heading {
+        margin: 0 0 1.25rem 0 !important;
+      }
+      #detail-title {
+        margin: 0 !important;
+        text-align: left !important;
+      }
+      main ul,
+      main li,
+      main p {
+        position: static !important;
+        text-align: left !important;
+        transform: none !important;
+        float: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- **** Header (navy) **** -->
+    <section style="background: #0d1b2a; color: #ffffff; padding: 2.5rem 5% 4rem;">
+      <a href="index.html#projects" class="back-link">
+        <i class="fa fa-angle-left"></i> Back to Projects
+      </a>
+
+      <div style="max-width: 1000px; margin: 3rem auto 0;">
+        <h1 id="detail-title" style="font-family: serif; font-size: var(--detail-title-size); font-weight: 800; line-height: 1.1;">
+          Swan-Neck Rear Wing Mount
+        </h1>
+
+        <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; margin-top: 2.5rem;">
+          <div style="flex: 1 1 380px;">
+            <p class="detail-p" style="font-size: var(--detail-subtitle-size); color: #cbd5e1; margin-bottom: 0; text-align: left;">
+              Designed and manufactured the swan-neck mount for our FSAE car's rear wing.
+            </p>
+          </div>
+          <div style="flex: 1 1 380px;">
+            <!-- TODO: swap for your preferred hero photo if f2.jpg (the final part) isn't it -->
+            <figure class="detail-figure">
+              <img
+                alt="Final swan-neck rear wing mount"
+                src="assets/f2.jpg"
+                style="box-shadow: 0 20px 48px rgba(0,0,0,0.28);"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- **** Main Content **** -->
+    <main style="padding: 0 5% 6rem;">
+      <div style="max-width: 1000px; margin: 3rem auto 0;">
+
+        <h2 id="overview-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+          Overview
+        </h2>
+
+        <p class="detail-p">
+          My goal was to create the lightest mounting mechanism possible for our car's rear
+          wing, while accounting for worst-case loading forces and achieving above a target
+          FOS of 3.0.
+        </p>
+
+        <p class="detail-p">
+          To do so, I created an entire prototype rear-wing assembly (including a later added
+          cross-member) to fully explore the effects of various forces on the mounting system.
+          After doing so, I performed 5 iterations of topology analysis to minimize part
+          weight, while confirming FOS levels in the assembly FEA.
+        </p>
+
+        <p class="detail-p">
+          Once the part was made, my team and I successfully water-jetted the mount, and I
+          tested the mount to ensure it could withstand the same forces simulated in CAD. The
+          swan-neck was successfully used on the car during competition with no errors!
+        </p>
+
+        <h2 id="process-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+          Process
+        </h2>
+
+        <h3 id="setup-heading" style="font-family: sans-serif; font-size: 1.5rem; font-weight: 700; color: #0d1b2a;">
+          Setup
+        </h3>
+
+        <p class="detail-p">
+          Simulating by applying forces directly to the swan-neck component ignores the
+          restraints caused by other components, mainly the cross-member rod connecting the 2
+          swan-necks. Therefore, to account for all forces and restraints on the swan-necks, I
+          created an entire prototype rear-wing setup assembly with tabs, connections,
+          endplates, main airfoil element, cross-member rod, and referenced it to the car's
+          chassis.
+        </p>
+
+        <p class="detail-p">
+          It is tricky to run topology analysis in the assembly-wide context, so topology
+          analyses were run on the swan-neck part itself. After each topology analysis, a
+          separate FEA was then run in the assembly-context to test FOS levels and analyze
+          other potential areas of high-stress.
+        </p>
+
+        <p class="detail-p">
+          After applying appropriate forces (gravity, downforce, drag) for the assumed
+          worst-case speed (30 m/s), as well as fixtures (hinges + roller at bottom brackets),
+          and connections (pins), the assembly-wide FEA was runnable.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Prototype rear-wing assembly referenced to the car's chassis" src="assets/assembly.jpg" />
+            <figcaption>Fig. 1 — Prototype rear-wing assembly with tabs, connections, endplates, and cross-member rod, referenced to the car's chassis.</figcaption>
+          </figure>
+        </div>
+
+        <h3 id="iterations-heading" style="font-family: sans-serif; font-size: 1.5rem; font-weight: 700; color: #0d1b2a;">
+          Iterations
+        </h3>
+
+        <p class="detail-p">
+          Initially performed 4 rounds of topology analysis. As topology analysis is less
+          accurate when removing higher percentages of material, I decided to perform many
+          iterations of lower percentage cutouts. The following figure shows the first 5 part
+          iterations, along with the percent mass reduction between each part.
+        </p>
+
+        <p class="detail-p">
+          Circular cutouts were preserved for the mounting points. New parts were made by
+          creating a new sketch on top of a sketch of the previous topology iteration.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="First 5 topology iterations of the swan-neck part" src="assets/iterations.jpg" />
+            <figcaption>Fig. 2 — First 5 topology iterations, with % mass reduction between each part.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          The topology began to mainly remove material from the inside of the upper bar
+          (practically unmanufacturable) during the 4th reduction, meaning the current design
+          is likely near the lowest feasible weight given the target FOS. No part-context FEA
+          was run for the final part — instead an assembly FEA was run. This was after
+          creating and adding a cross-member (and its mount points) to analyze its effects on
+          the force tolerance.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Cross-member and its mount points added to the assembly" src="assets/cm.jpg" />
+            <figcaption>Fig. 3 — Cross-member and its mount points, added to analyze their effect on force tolerance.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Analyzed both straight-line acceleration and acceleration while turning (2 G's
+          applied to endplates) to account for worst-case loading.
+        </p>
+
+        <div class="figure-row" style="--cols: 2;">
+          <figure class="detail-figure">
+            <img alt="Turning load case setup with 2 G's applied to endplates" src="assets/turning.jpg" />
+            <figcaption>Fig. 4 — Turning load case: 2 G's applied to the endplates.</figcaption>
+          </figure>
+          <figure class="detail-figure">
+            <img alt="FEA results for the turning load case" src="assets/turningFEA.jpg" />
+            <figcaption>Fig. 5 — FEA results for the turning load case.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Part in assembly had a FOS of 4.1 for straight-line acceleration, and 3.7 for
+          turning.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Part after topology study 5, with a preserved cross-member mounting area" src="assets/top5.jpg" />
+            <figcaption>Fig. 6 — Part after topology study 5, with a preserved area added where the cross-member mounts.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          After smoothing the edges (to conform with safety standards), here is the initial
+          final product.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Initial final product with smoothed edges" src="assets/f1.jpg" />
+            <figcaption>Fig. 7 — Initial final product, after smoothing edges to meet safety standards.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Unfortunately I forgot to delete some references to the rear wing, and when its
+          profile was changed the swan-neck part broke. I was able to re-build the part
+          (updated to the new wing profile) based on info in the broken file.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Rebuilt swan-neck part matching the new wing profile" src="assets/f2.jpg" />
+            <figcaption>Fig. 8 — Rebuilt part, updated to match the new wing profile.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Fast forward to the final product! Smoothed out edges and added M6 holes where
+          necessary.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Final FEA results for the swan-neck part" src="assets/f2FEA.jpg" />
+            <figcaption>Fig. 9 — Final FEA results: FOS of 3.1 under worst-case acceleration + turning, at 182 grams.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          FOS of 3.1 under worst-case acceleration + turning forces. Mass is 182 grams,
+          slightly better than last year. However, the previous part didn't account for
+          turning G's or the cross-member, so the new part maintains the same FOS under
+          significantly more strenuous loading conditions at the same weight!
+        </p>
+
+        <p class="detail-p">
+          The team and I then waterjetted the mounts. Shown below is my design (in hand)
+          compared to last year's mount.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Waterjet-cut mount compared to last year's design" src="assets/compare.jpg" />
+            <figcaption>Fig. 10 — Waterjet-cut mount (in hand), compared to last year's design.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          I then tested the part's resistance to turning forces using 0 (control), 5, and 10
+          lbs, and measured the deflection from resting state. 10 lbs (shown below) is ~45N
+          (3 kg × 1.5 G's), whereas only 20N (assumed 2 kg rear-wing × 1 G) was used in the
+          CAD FEA. As seen, the part holds up just fine even under these abnormal stresses!
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Physical deflection test under a 10 lb turning load" src="assets/test.jpg" />
+            <figcaption>Fig. 11 — Physical deflection test at 10 lbs (~45N), well above the 20N used in the CAD FEA.</figcaption>
+          </figure>
+        </div>
+
+        <h2 id="results-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+          Results
+        </h2>
+        <ul style="font-family: sans-serif; font-size: var(--detail-body-text-size); line-height: 1.8; color: #4a5568; margin: 0 0 2.5rem 0; padding-left: 1.25rem;">
+          <li>Achieved target FOS of 3.0 (actual: 3.1).</li>
+          <li>Maintained the same weight as the previous year's swan-neck (182g vs 183g), while properly accounting for worst-case loading scenarios.</li>
+          <li>Mount was successfully used in competition with no errors.</li>
+          <li>Learned CAD part + assembly modelling, and FEA + topology analysis.</li>
+        </ul>
+
+        <h3 id="slides-heading" style="font-family: sans-serif; font-size: 1.3rem; font-weight: 700; color: #0d1b2a;">
+          Slide from the official competition presentation:
+        </h3>
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Competition presentation slide about the swan-neck mount" src="assets/compMount.jpg" />
+            <figcaption>Fig. 12 — Competition presentation slide.</figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- **** Footer — same as index.html **** -->
+    <footer style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 3rem 5%;">
+      <div style="max-width: 1400px; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 2rem;">
+
+        <div>
+          <h3 style="font-family: serif; font-size: var(--footer-name-size); font-weight: 800; color: #0d1b2a; margin: 0 0 0.25rem 0;">
+            Leif Moller
+          </h3>
+          <p style="font-family: sans-serif; font-size: var(--footer-text-size); color: #64748b; margin: 0 0 1rem 0;">
+            UBC Engineering Physics Student
+          </p>
+          <div style="display: flex; gap: 1.25rem; align-items: center;">
+            <a rel="noreferrer" href="mailto:leif.moller12@gmail.com" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="Email">
+              <i class="fa fa-envelope-o" style="font-size: 1.3rem;"></i>
+            </a>
+            <a rel="noreferrer" href="https://linkedin.com/in/leifmoller" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="LinkedIn">
+              <i class="fa fa-linkedin" style="font-size: 1.3rem;"></i>
+            </a>
+            <a rel="noreferrer" href="https://github.com/LeifMoller" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="GitHub">
+              <i class="fa fa-github" style="font-size: 1.3rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <nav style="display: flex; gap: 1.5rem; justify-content: flex-end; margin-bottom: 0.75rem; flex-wrap: wrap;">
+            <a href="index.html#about" style="color: #334155; text-decoration: none; font-family: sans-serif; font-weight: 600; font-size: var(--footer-text-size);">About</a>
+            <a href="index.html#projects" style="color: #334155; text-decoration: none; font-family: sans-serif; font-weight: 600; font-size: var(--footer-text-size);">Projects</a>
+          </nav>
+          <p style="font-family: sans-serif; font-size: calc(var(--footer-text-size) * 0.85); color: #94a3b8; margin: 0;">
+            © 2026 Leif Moller
+          </p>
+        </div>
+
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+
+    <title>Aerodynamic Simulation Visualizer + Interpolator | Leif Moller</title>
+
+    <link rel="stylesheet" href="sizes.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="styles.scss" />
+
+    <style>
+      /* Sizes come from sizes.css (linked above) — see that file to adjust. */
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-weight: 600;
+        opacity: 0.85;
+      }
+      .back-link:hover {
+        opacity: 1;
+      }
+      .detail-btn {
+        display: inline-block;
+        padding: 1.4rem 3.2rem;
+        border-radius: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+      }
+      .detail-btn--solid {
+        background: #0d1b2a;
+        color: #ffffff;
+      }
+
+      /* Figure + caption pattern used throughout this page. Default: no
+         cropping, images keep their natural aspect ratio. A couple of
+         specific images below override this with object-fit:cover where
+         you've said cropping is fine. */
+      figure.detail-figure {
+        margin: 0;
+      }
+      figure.detail-figure img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        display: block;
+      }
+      figure.detail-figure figcaption {
+        font-family: sans-serif;
+        font-size: var(--detail-caption-text-size);
+        color: #718096;
+        margin-top: 0.75rem;
+        font-style: italic;
+      }
+
+      .figure-row {
+        display: grid;
+        grid-template-columns: repeat(var(--cols, 2), 1fr);
+        gap: 1.75rem;
+        align-items: start;
+        margin: 0 0 2.5rem 0;
+      }
+      @media (max-width: 800px) {
+        .figure-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .detail-p {
+        font-family: sans-serif;
+        font-size: var(--detail-body-text-size);
+        line-height: 1.7;
+        color: #4a5568;
+        margin: 0 0 1.5rem 0;
+      }
+
+      /* ============================================================
+         The base template's hidden styles.scss applies its own
+         alignment/position/margin rules to plain h1/h2/h3/p/ul/li tags.
+         Regular class selectors aren't specific enough to beat the
+         template's !important rules, so these use unique IDs, which
+         reliably win regardless of the template's own specificity.
+         ============================================================ */
+      #detail-title,
+      #overview-heading,
+      #process-heading,
+      #results-heading,
+      #slides-heading {
+        position: static !important;
+        transform: none !important;
+        float: none !important;
+      }
+      #overview-heading,
+      #process-heading,
+      #results-heading,
+      #slides-heading {
+        text-align: left !important;
+      }
+      #overview-heading {
+        margin: 0 0 1rem 0 !important;
+      }
+      #process-heading {
+        margin: 2.5rem 0 1rem 0 !important;
+      }
+      #results-heading {
+        margin: 3rem 0 1rem 0 !important;
+      }
+      #slides-heading {
+        margin: 0 0 1.25rem 0 !important;
+      }
+      #detail-title {
+        margin: 0 !important;
+        text-align: left !important;
+      }
+      main ul,
+      main li,
+      main p {
+        position: static !important;
+        text-align: left !important;
+        transform: none !important;
+        float: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- **** Header (navy) — contains the title AND the short description
+         + first photo together **** -->
+    <section style="background: #0d1b2a; color: #ffffff; padding: 2.5rem 5% 4rem;">
+      <a href="index.html#projects" class="back-link">
+        <i class="fa fa-angle-left"></i> Back to Projects
+      </a>
+
+      <div style="max-width: 1000px; margin: 3rem auto 0;">
+        <h1 id="detail-title" style="font-family: serif; font-size: var(--detail-title-size); font-weight: 800; line-height: 1.1;">
+          Aerodynamic Simulation Visualizer + Interpolator
+        </h1>
+
+        <!-- Short description sits next to the first photo, side by side -->
+        <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; margin-top: 2.5rem;">
+          <div style="flex: 1 1 380px;">
+            <p class="detail-p" style="font-size: var(--detail-subtitle-size); color: #cbd5e1; margin-bottom: 0; text-align: left;">
+              Programmed a web-scraper and 3d spline interpolator that uses simulated data in
+              OptimumLap to predict competition performance and guide Aero-kit design.
+            </p>
+          </div>
+          <div style="flex: 1 1 380px;">
+            <figure class="detail-figure">
+              <img
+                alt="Aerodynamic simulation visualizer and interpolator project"
+                src="assets/lapSim_display.jpg"
+                style="box-shadow: 0 20px 48px rgba(0,0,0,0.28);"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- **** Main Content — padding lives on <main> only; the inner div below
+         has max-width + centering and ZERO padding of its own, mirroring the
+         header's box structure exactly so the two columns truly line up
+         (mixing max-width and padding on the same box was the mismatch). **** -->
+    <main style="padding: 0 5% 6rem;">
+      <div style="max-width: 1000px; margin: 3rem auto 0;">
+
+      <h2 id="overview-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+        Overview
+      </h2>
+
+      <p class="detail-p">
+        A racecars goal is (generally) to maximize downforce (Cl) and minimize drag (Cd). By
+        using aerodynamic simulation software (StarCCM+), we can predict the Cl and Cd values
+        for different aero-kit configurations created in CAD.
+      </p>
+
+      <p class="detail-p">
+        I created a program for the Aerodynamics to quantifiably compare different sets of Cd
+        and Cl values (as opposed to guesstimating), and determine which airfoil setups prove
+        most beneficial to lap times and competition success.
+      </p>
+
+      <p class="detail-p">
+        To do so, I started by running lap-time simulations using OptimumLap, and created a
+        web-scraping software to consolidate desired data. I then created a software in Python
+        that is used to visualize trends of performance for Cd and Cl values in different race
+        categories (based on simulation data), and predict competition points for specific Cd
+        and Cl values. These interpolated return values will guide UBC Formula Electric
+        Aerodynamics kit design, as the Aero team aims to maximize points in competition.
+      </p>
+
+      <h2 id="process-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+        Process
+      </h2>
+
+      <p class="detail-p">
+        I began by sketching over maps of the 4 FSAE event race tracks in Solidworks for use
+        in OptimumLap. After creating the tracks and a prototype car in OptimumLap,
+        two-parameter batch simulations were run for each track with changing Cd and Cl
+        coefficients. The lap-time results were exported to Excel, alongside their respective
+        Cd and Cl values. Based on the FSAE rulebook, competition points garnered by each time
+        (corresponding to a Cd + Cl set) were calculated for each event, alongside a total
+        point sum.
+      </p>
+
+      <!-- OptimumLap + Excel: cropping is fine here. Excel is anchored to its
+           left edge so if anything gets cut off, it's the right side. -->
+      <div class="figure-row" style="--cols: 2;">
+        <figure class="detail-figure">
+          <img
+            alt="OptimumLap batch simulation setup"
+            src="assets/optimumLap.jpg"
+            style="height: 320px; object-fit: cover;"
+          />
+          <figcaption>Fig. 1 — OptimumLap batch simulation setup for the four FSAE tracks, sweeping Cd and Cl values.</figcaption>
+        </figure>
+        <figure class="detail-figure">
+          <img
+            alt="Exported lap times and calculated competition points in Excel"
+            src="assets/excel.jpg"
+            style="height: 320px; object-fit: cover; object-position: left center;"
+          />
+          <figcaption>Fig. 2 — Exported lap times and calculated competition points for each Cd/Cl pair.</figcaption>
+        </figure>
+      </div>
+
+      <p class="detail-p">
+        I then created a CSV parser in Python using Pandas to store the desired data in an
+        array. Using the data, I created 3D mesh grids of all events for visualization. This
+        was initially the scope of the project, however I wanted a way to get an exact number
+        estimate (given a Cd and Cl pair) rather than just being able to look at general graph
+        trends.
+      </p>
+
+      <!-- Acceleration mesh grid sits alone, right before the paragraph that
+           introduces the interpolator -->
+      <div class="figure-row" style="--cols: 1; max-width: 500px; margin-left: auto; margin-right: auto;">
+        <figure class="detail-figure">
+          <img alt="3D mesh grid of the Acceleration event points surface" src="assets/accel.jpg" />
+          <figcaption>Fig. 3 — 3D mesh grid visualizing the Acceleration event's points surface across Cd and Cl values.</figcaption>
+        </figure>
+      </div>
+
+      <p class="detail-p">
+        This led me to create an interpolator based on 3d mesh grid splining that takes Cd and
+        Cl value as units and outputs interpolated points value for desired event. The black
+        star on the interpolated grid represents a test set of Cl and Cd values and their
+        respective expected points output across all events. I also created an overlay of all
+        event graphs for visual comparison.
+      </p>
+
+      <!-- Interpolator + overlay, side by side -->
+      <div class="figure-row" style="--cols: 2;">
+        <figure class="detail-figure">
+          <img alt="Spline-interpolated points surface with a test Cd/Cl pair marked" src="assets/interpolate.jpg" />
+          <figcaption>Fig. 4 — Spline-interpolated points surface; the black star marks a test Cd/Cl pair and its predicted points.</figcaption>
+        </figure>
+        <figure class="detail-figure">
+          <img alt="Overlay of all four event graphs for comparison" src="assets/overlay.jpg" />
+          <figcaption>Fig. 5 — Overlay of all four event surfaces for direct comparison.</figcaption>
+        </figure>
+      </div>
+
+      <h2 id="results-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
+        Results
+      </h2>
+      <ul style="font-family: sans-serif; font-size: var(--detail-body-text-size); line-height: 1.8; color: #4a5568; margin: 0 0 2.5rem 0; padding-left: 1.25rem;">
+        <li>The aerodynamics competition judge complimented the Python script, saying the use of point-based simulations was great!</li>
+        <li>Our aero kit received an 8/15 score, the second best percentage of our car's subteam scores.</li>
+        <li>Front wing and rear wing teams were able to optimize their airfoil configuration using the interpolator, and will continue to use it in coming years.</li>
+      </ul>
+
+      <h3 id="slides-heading" style="font-family: sans-serif; font-size: 1.3rem; font-weight: 700; color: #0d1b2a;">
+        Slides from the official competition presentation:
+      </h3>
+      <div class="figure-row" style="--cols: 2;">
+        <figure class="detail-figure">
+          <img alt="Competition presentation slide 1" src="assets/comp1.jpg" />
+          <figcaption>Fig. 6 — Competition presentation slide 1.</figcaption>
+        </figure>
+        <figure class="detail-figure">
+          <img alt="Competition presentation slide 2" src="assets/comp2.jpg" />
+          <figcaption>Fig. 7 — Competition presentation slide 2.</figcaption>
+        </figure>
+      </div>
+
+      <!-- TODO: link to the real source code / write-up -->
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a rel="noreferrer" target="_blank" href="https://github.com/LeifMoller/Aero-Sim-Interpolator" class="detail-btn detail-btn--solid">View Source Code</a>
+      </div>
+
+      </div>
+    </main>
+
+    <!-- **** Footer — same as index.html **** -->
+    <footer style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 3rem 5%;">
+      <div style="max-width: 1400px; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 2rem;">
+
+        <div>
+          <h3 style="font-family: serif; font-size: var(--footer-name-size); font-weight: 800; color: #0d1b2a; margin: 0 0 0.25rem 0;">
+            Leif Moller
+          </h3>
+          <p style="font-family: sans-serif; font-size: var(--footer-text-size); color: #64748b; margin: 0 0 1rem 0;">
+            UBC Engineering Physics Student
+          </p>
+          <div style="display: flex; gap: 1.25rem; align-items: center;">
+            <a rel="noreferrer" href="mailto:leif.moller12@gmail.com" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="Email">
+              <i class="fa fa-envelope-o" style="font-size: 1.3rem;"></i>
+            </a>
+            <a rel="noreferrer" href="https://linkedin.com/in/leifmoller" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="LinkedIn">
+              <i class="fa fa-linkedin" style="font-size: 1.3rem;"></i>
+            </a>
+            <a rel="noreferrer" href="https://github.com/LeifMoller" target="_blank" style="color: #0d1b2a; text-decoration: none;" aria-label="GitHub">
+              <i class="fa fa-github" style="font-size: 1.3rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <nav style="display: flex; gap: 1.5rem; justify-content: flex-end; margin-bottom: 0.75rem; flex-wrap: wrap;">
+            <a href="index.html#about" style="color: #334155; text-decoration: none; font-family: sans-serif; font-weight: 600; font-size: var(--footer-text-size);">About</a>
+            <a href="index.html#projects" style="color: #334155; text-decoration: none; font-family: sans-serif; font-weight: 600; font-size: var(--footer-text-size);">Projects</a>
+          </nav>
+          <p style="font-family: sans-serif; font-size: calc(var(--footer-text-size) * 0.85); color: #94a3b8; margin: 0;">
+            © 2026 Leif Moller
+          </p>
+        </div>
+
+      </div>
+    </footer>
+  </body>
+</html>

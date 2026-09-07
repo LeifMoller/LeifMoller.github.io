@@ -1,0 +1,39 @@
+/* ==================================================================
+   SIZE CONTROLS — this file is the ONE place to change sizes across
+   the entire site (index.html + every project page). Every value
+   below is used somewhere via var(--name); change a number here and
+   it updates everywhere that variable is referenced.
+   ================================================================== */
+   :root {
+    /* ---- Hero (index.html top section) ---- */
+    --hero-name-size: 6rem;              /* "Leif Moller" heading in the hero */
+    --hero-bio-size: 1.75rem;            /* hero paragraph/bio text */
+    --hero-photo-size: 360px;            /* hero profile photo width */
+  
+    /* ---- Section headings ("About Me" / "Projects") ---- */
+    --section-title-size: 56px;
+  
+    /* ---- Body text (paragraphs) — bumped up site-wide ---- */
+    --body-text-size: 1.35rem;           /* About Me paragraph + project card description */
+    --body-line-height: 1.7;
+  
+    /* ---- Skill bubbles (used in the hero AND under each project card) ---- */
+    --skill-badge-text-size: 1.35rem;
+  
+    /* ---- "View Project →" link under each project card description ---- */
+    --project-cta-text-size: 1.3rem;
+  
+    /* ---- Project thumbnail photos on the index page ---- */
+    --project-image-height: 380px;
+  
+    /* ---- Footer ---- */
+    --footer-name-size: 2.25rem;
+    --footer-text-size: 1.35rem;
+  
+    /* ---- Project detail pages (project1.html, project2.html, ...) ---- */
+    --detail-title-size: 5rem;           /* big project title at the top */
+    --detail-subtitle-size: 2rem;        /* one-line summary under the title */
+    --detail-heading-size: 3rem;         /* "Overview" / "Results" headings */
+    --detail-body-text-size: 1.9rem;     /* paragraph text in the write-up */
+    --detail-caption-text-size: 1.3rem;  /* small text under each figure/photo */
+  }
