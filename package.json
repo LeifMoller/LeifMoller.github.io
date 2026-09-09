@@ -1,8 +1,8 @@
 {
-  "name": "simplefolio",
-  "version": "1.0.1",
-  "private": "true",
-  "description": "A clean, beautiful and responsive portfolio template for Developers!",
+  "name": "leifmoller-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio site for Leif Moller — UBC Engineering Physics. Based on SimpleFolio",
   "source": [
     "src/index.html",
     "src/project1.html",
@@ -15,15 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cobiwave/simplefolio"
+    "url": "git+https://github.com/LeifMoller/LeifMoller.github.io"
   },
   "keywords": [],
-  "author": "Jacobo Martinez",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cobiwave/simplefolio/issues"
-  },
-  "homepage": "https://github.com/cobiwave/simplefolio#readme",
+  "author": "Leif Moller",
+  "license": "MIT",
+  "homepage": "https://leifmoller.github.io",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
     "parcel": "^2.8.2",

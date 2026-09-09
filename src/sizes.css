@@ -17,6 +17,9 @@
     --body-text-size: 1.35rem;           /* About Me paragraph + project card description */
     --body-line-height: 1.7;
   
+    /* ---- Education section (its own size, separate from body text above) ---- */
+    --education-text-size: 1.6rem;
+  
     /* ---- Skill bubbles (used in the hero AND under each project card) ---- */
     --skill-badge-text-size: 1.35rem;
   
