@@ -207,16 +207,26 @@
         </div>
 
         <p class="detail-p">
-          Experimental force readings differed from theoretical values enough to warrant the
-          creation of our own force–ADC curve. This was done using several data points
-          <!-- TODO: fill in the actual number of data points used -->
-          collected experimentally.
+          Originally derived an equation for ADC-to-force conversion based on datasheet specs.
         </p>
 
         <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
           <figure class="detail-figure">
-            <img alt="Custom force-ADC calibration curve" src="assets/forceCurve.jpg" />
-            <figcaption>Fig. 3 — Custom force–ADC curve, built from experimental data rather than the datasheet.</figcaption>
+            <img alt="Force-ADC curve comparing datasheet theory to experimental data" src="assets/forceCurve.jpg" />
+            <figcaption>Fig. 3 — Force–ADC curve, comparing the datasheet-derived theoretical equation to experimental readings.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          However, experimental force readings differed from theoretical values enough to
+          warrant the creation of our own force–ADC curve. This was done using several data
+          points collected experimentally. Once that was done, tested in code.
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Circuit schematic for the gripper, drawn in KiCad" src="assets/kiCircuit1.jpg" />
+            <figcaption>Fig. 4 — Circuit schematic drawn in KiCad (self-taught for this project). Missing the second FSR reader but otherwise complete; includes a custom-made component for the DC gearmotor, which wasn't in KiCad's library.</figcaption>
           </figure>
         </div>
 
