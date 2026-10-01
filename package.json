@@ -2,12 +2,13 @@
   "name": "leifmoller-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal portfolio site for Leif Moller — UBC Engineering Physics. Based on SimpleFolio",
+  "description": "Personal portfolio site for Leif Moller — UBC Engineering Physics.",
   "source": [
     "src/index.html",
     "src/project1.html",
     "src/project2.html",
-    "src/project3.html"
+    "src/project3.html",
+    "src/project4.html"
   ],
   "scripts": {
     "start": "parcel",
