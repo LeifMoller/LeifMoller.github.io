@@ -147,15 +147,15 @@
         <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; margin-top: 2.5rem;">
           <div style="flex: 1 1 380px;">
             <p class="detail-p" style="font-size: var(--detail-subtitle-size); color: #cbd5e1; margin-bottom: 0; text-align: left;">
-              Building a custom guitar pedal by editing a schematic, laying it out, and
-              designing a PCB board.
+              Built a custom PCB for a guitar pedal, including editing a schematic and
+              designing + laying out the PCB.
             </p>
           </div>
           <div style="flex: 1 1 380px;">
             <figure class="detail-figure">
               <img
-                alt="Sweet Honey Overdrive schematic drawn in KiCad"
-                src="assets/SH_schematic.jpg"
+                alt="Sweet Honey Overdrive guitar pedal PCB"
+                src="assets/frontpcb.jpg"
                 style="box-shadow: 0 20px 48px rgba(0,0,0,0.28);"
               />
             </figure>
@@ -234,12 +234,111 @@
           </figure>
         </div>
 
-        <h2 id="results-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
-          Results
-        </h2>
-        <p class="detail-p" style="font-style: italic;">
-          Schematic complete! Now moving into PCB layout, with the board designed by end of day
-          Monday, Oct. 5.
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="LED clipping section of the schematic" src="assets/leds.jpg" />
+            <figcaption>Fig. 7 — LED clipping section.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Wanted to add a mode clipping at a lower voltage (0.7V rather than 2.2V) to give a
+          fuzzier sound, so added a switch here to toggle silicon and LED clipping modes.
+        </p>
+
+        <p class="detail-p">
+          Updated circuit diagram:
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Updated circuit diagram" src="assets/schem.jpg" />
+            <figcaption>Fig. 8 — Updated circuit diagram.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Created a list of all the parts I needed on DigiKey, and referenced them for
+          footprints.
+        </p>
+
+        <div class="figure-row" style="--cols: 2;">
+          <figure class="detail-figure">
+            <img alt="Parts list from DigiKey" src="assets/parts.jpg" />
+            <figcaption>Fig. 9 — Parts list.</figcaption>
+          </figure>
+          <figure class="detail-figure">
+            <img alt="Assigned footprints" src="assets/foots.jpg" />
+            <figcaption>Fig. 10 — Assigned footprints.</figcaption>
+          </figure>
+        </div>
+
+        <div class="figure-row" style="--cols: 2;">
+          <figure class="detail-figure">
+            <img alt="PCB layout for the guitar pedal" src="assets/Layout.jpg" />
+            <figcaption>Fig. 11 — PCB layout.</figcaption>
+          </figure>
+          <figure class="detail-figure">
+            <img alt="Physical layout of the guitar pedal board" src="assets/layout_physical.jpg" />
+            <figcaption>Fig. 12 — Physical layout.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Okay, the board is laid out! I had to work under a pretty restrictive width of 56mm
+          to ensure that it fits into the enclosure I plan on using. As I needed IN, OUT, and
+          CTRL on the bottom of the pedal to connect to the footswitch, I decided to use a
+          counter-clockwise design philosophy, starting with power coming into the right side
+          at +9V (as the input jack for power is right hand side). This then loops around the
+          Op-Amp and potentiometers in the center of the board, eventually reaching OUT on the
+          other side. This helps keep the Op-Amp + Pots centered as much of the design revolves
+          around them, and also separates the input and output channels to prevent unwanted
+          noise. Using +VB on top layer and GND as fill on bottom layer to minimize routing.
+          Now to wire!
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Routed PCB for the guitar pedal" src="assets/wiring.jpg" />
+            <figcaption>Fig. 13 — Wiring.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Wired! Tried to avoid 90 degree angles, keep vias to a minimum and created a wider
+          track for power (anything at 9V).
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Design rule check results" src="assets/check.jpg" />
+            <figcaption>Fig. 14 — Check.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Cleaned up some silkscreen warning, and all good!
+        </p>
+
+        <div class="figure-row" style="--cols: 1; max-width: 650px; margin-left: auto; margin-right: auto;">
+          <figure class="detail-figure">
+            <img alt="Finished guitar pedal PCB" src="assets/finished!.jpg" />
+            <figcaption>Fig. 15 — Finished PCB.</figcaption>
+          </figure>
+        </div>
+
+        <p class="detail-p">
+          Here is the finished PCB. I would love to generate the Gerber files now, but I am
+          going to wait until I get things confirmed on the mechanical side (pedalbox width,
+          use of mounting holes, and if I’m going to custom make my own pedal box!) just in
+          case the board needs tweaking.
+        </p>
+
+        <p class="detail-p">
+          The next step is going to be running the schematic through LTspice to make sure
+          everything works as intended, and see if there's any optimization needed for part
+          capacitance/resistance values. And figuring out details on the pedal box / foot
+          switch.
         </p>
 
       </div>
