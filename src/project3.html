@@ -179,9 +179,9 @@
         </p>
 
         <p class="detail-p">
-          Currently working on the circuitry for the motor, after which I will code the PI
-          loop while my partner prints and assembles the claw. After we confirm the claw works
-          with force presets, we will add a camera connected to a Raspberry Pi for the
+          I have written the PI loop code and am currently working on the circuitry for the
+          motor, while my partner prints and assembles the claw. After we confirm the claw
+          works with force presets, we will add a camera connected to a Raspberry Pi for the
           computer vision software.
         </p>
 
@@ -236,6 +236,15 @@
             <figcaption>Fig. 4 — Circuit schematic for the gripper, drawn in KiCad.</figcaption>
           </figure>
         </div>
+
+        <p class="detail-p">
+          Wrote the PI control code. The FSR reading is smoothed with a 5-sample moving average
+          and converted to force, and a target force is sent over serial. The PI controller
+          turns the error between the target and measured force into a PWM signal for the
+          motor (positive output closes the claw, negative opens it), with anti-windup on the
+          integral term. The gains (Kp, Ki) are placeholder values that still need to be
+          tuned.
+        </p>
 
         <h2 id="results-heading" style="font-family: serif; font-size: var(--detail-heading-size); font-weight: 800; color: #0d1b2a;">
           Results
